@@ -21,9 +21,9 @@ pip install penman
 pip install ./amr-utils
 ```
 - Train and Evaluate
-``
+```
 bash run_AMRSim_Infusion.sh
-``
+```
 
 ## Citation
 
