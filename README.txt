@@ -11,9 +11,15 @@
 
 ### Infusion Model
 - install requirements
-``
+```
 pip install -r requirements.txt
-``
+```
+Install [amr-utils](https://github.com/ablodge/amr-utils):
+```
+git clone https://github.com//ablodge/amr-utils
+pip install penman
+pip install ./amr-utils
+```
 - Train and Evaluate
 ``
 bash run_AMRSim_Infusion.sh
