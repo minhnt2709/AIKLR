@@ -1,12 +1,26 @@
-This project uses code from open source project AMRSim (https://github.com/zzshou/AMRSim), AMRBART(https://github.com/goodbai-nlp/AMRBART).
+# A Co-Attentive Infusion of Structural Knowledge into Language Models towards Legal Textual Inference
 
-1. To run the infusion architecture using AMRSim as the AMR encoding model
-- install requirements from AMRSim https://github.com/zzshou/AMRSim
-- cd AMRSim/sentence-transformers
-- run sh run_train_SimInfusion.sh to train and validate models
+## Models and Data
+* Dataset: The Dataset is ONLY for research use and NOT for any commercial use. Please refer to [COLIEE][https://coliee.org/overview] for data.
+* Model: The checkpoint for the infusion model is available for download [here][https://1drv.ms/f/c/2b28b99fcdb225cc/Elw01jWTokxOgN5QlukkHpEBW21-dUBs03SwbkTjjPF49g?e=cxBipd]
 
-2. To run the infusion architecture using AMRBART as the AMR encoding model
-- install requirements from AMRBART https://github.com/goodbai-nlp/AMRBART
-- cd AMRBART/pre_train
-- To train and validate models
-python infusion_AMRBART/train_AMRBARTInfusion.py -model_type=MODEL_TYPE -infusion_type=INFUSION_TYPE -text_lang=TEXT_LANG -parser=PARSER -data_year=YEAR -log_path=LOG_PATH -save_paht=MODEL_PATH
+## Usage
+### AMR Parser
+* Please refer to [SPRING][https://github.com/SapienzaNLP/spring] for implementing AMR parser
+
+### Infusion Model
+- install requirements
+``
+pip install -r requirements.txt
+``
+- Train and Evaluate
+``
+bash run_AMRSim_Infusion.sh
+``
+
+## Citation
+
+## Contact
+In case of any concerns, please contact minhnt@jaist.ac.jp
+
+
