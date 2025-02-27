@@ -1,6 +1,4 @@
-WORKSPACE=$(pwd)
-
-RUN_FILE="new_architecture/train_AMRInfusion.py"
+RUN_FILE="infusion/train_AMRInfusion.py"
 
 MODEL_TYPE="infusion"
 INFUSION_TYPE="co_attn_res"
@@ -14,11 +12,11 @@ NUM_EPS=10
 DEVICE="cuda"
 
 
-LOG_PREDS_ROOT="new_architecture/logs/emnlp/"
+LOG_PREDS_ROOT="infusion/logs/emnlp/"
 LOG_PREDS_FILE="$YEAR$LANG$PARSER$INFUSION_TYPE"
 LOG_PREDS_PATH="$LOG_PREDS_ROOT$LOG_PREDS_FILE.txt"
 
-LOG_MODELS_ROOT="new_architecture/ckpt/"
+LOG_MODELS_ROOT="infusion/ckpt/"
 LOG_MODELS_FILE="$YEAR$LANG$PARSER$INFUSION_TYPE"
 LOG_MODELS_PATH=$LOG_MODELS_ROOT$LOG_MODELS_FILE
 

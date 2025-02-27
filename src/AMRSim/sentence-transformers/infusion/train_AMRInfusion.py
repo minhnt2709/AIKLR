@@ -2,8 +2,7 @@ from transformers import AutoTokenizer, AutoModel
 from torch import nn
 from torch.optim.lr_scheduler import StepLR
 
-from new_architecture.AMRInfusion import AMRInfusion
-from new_architecture.AMRInfusionMul import AMRInfusionMul
+from infusion.AMRInfusion import AMRInfusion
 from sentence_transformers import ExtendSentenceTransformer
 from preprocess import generate_ref_edge
 from sentence_transformers import InputExample
@@ -49,7 +48,6 @@ def check_amr_missing(line):
 
 
 def get_text_jp(filepath, qid):
-    # filepath = "data_origin/coliee-2024/en_jp_train2024_v2.json"
     with open(filepath, "r") as f:
         data = json.load(f)
 
@@ -61,13 +59,10 @@ def get_text_jp(filepath, qid):
             legal_text = ""
             for i, a in enumerate(sample["relevant_articles"]):
                 article_text = a["article_content_jp"]
-                # print(article_text[-1])
-                # print(i)
                 if article_text[-1] == ".":
                     legal_text += article_text + " "
                 elif article_text[-1] != ".":
                     legal_text += article_text + ". "
-                # print(legal_text)
             article = legal_text
 
     return question, article
@@ -89,7 +84,6 @@ def prepare_input(
             line = json.loads(line)
 
             # prepare text input
-            # print(line)
             label = line["label"]
 
             qid = line["id"]
@@ -98,14 +92,10 @@ def prepare_input(
                 text_article = line["ref2"]
             elif text_lang == "jp":
                 text_question, text_article = get_text_jp(originpath, qid)
-                # print(text_question, text_article)
             text_input = prepare_text_input(
                 text_question, text_article, text_tokenizer, model_type
             )
-            # text_input = [text_input_ids, text_attention_mask, text_token_type_ids]
 
-            # print(text_question, text_article, text_input)
-            # break
 
             # prepare amr input
             # max linearised graph length for AMRSim 64,128,256
@@ -272,9 +262,6 @@ def main():
     amr_model = ExtendSentenceTransformer(amr_pretrained_path)
     amr_tokenizers = amr_model.tokenizer
 
-    # text_pretrained_path = "FacebookAI/roberta-large"
-    # text_pretrained_path = "google-bert/bert-base-cased"
-    # text_pretrained_path = "google-bert/bert-base-multilingual-cased"
     text_pretrained_path = "google-bert/bert-base-multilingual-uncased"
 
     text_model = AutoModel.from_pretrained(text_pretrained_path)
@@ -288,7 +275,7 @@ def main():
     else:
         concat_emb_dim = 768 * 2
         emb_dim = 768
-    model = AMRInfusionMul(
+    model = AMRInfusion(
         text_model=text_model,
         amr_model=amr_model,
         dropout=0.1,
