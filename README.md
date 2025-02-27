@@ -27,5 +27,12 @@ bash run_AMRSim_Infusion.sh
 
 ## Citation
 
+## Acknowledgments
+This project uses code from the following open source projects:
+- [AMRSim](https://github.com/zzshou/AMRSim)
+- [Sentence-Transformers](https://www.sbert.net)
+
+Thank you to the contributors of these projects for their valuable contributions to the open source community.
+
 ## Contact
 In case of any concerns, please contact minhnt@jaist.ac.jp
