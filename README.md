@@ -1,6 +1,8 @@
 
 # A Co-Attentive Infusion of Structural Knowledge into Language Models towards Legal Textual Inference
 
+![image info](figs/overview_AIKLR.png)
+
 ## Models and Data
 * Dataset: The Dataset is ONLY for research use and NOT for any commercial use. Please refer to [COLIEE](https://coliee.org/overview) for data. 
 * Model: The checkpoint for the infusion model is available for download [here](https://1drv.ms/f/c/2b28b99fcdb225cc/Elw01jWTokxOgN5QlukkHpEBW21-dUBs03SwbkTjjPF49g?e=cxBipd).
@@ -10,11 +12,11 @@
 * Please refer to [SPRING](https://github.com/SapienzaNLP/spring) for implementing AMR parser.
 
 ### Infusion Model
-- install requirements
+- Install requirements
 ```
 pip install -r requirements.txt
 ```
-Install [amr-utils](https://github.com/ablodge/amr-utils):
+- Install [amr-utils](https://github.com/ablodge/amr-utils):
 ```
 git clone https://github.com//ablodge/amr-utils
 pip install penman
